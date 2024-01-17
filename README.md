@@ -163,7 +163,7 @@ we point to the current directory. So you must run this command on the top level
 	docker build --tag=docker-java-hello-world-app .
 ```
 
-As you run the command which is written above, a successful example output will be as below;
+As you run the command which is written above, a successful example output will be as below:
 
 ```
 	C:\00_ANA\JavaEE\WS\docker-java-app-example>docker build --tag=docker-java-hello-world-app .
