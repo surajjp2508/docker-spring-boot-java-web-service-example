@@ -277,7 +277,7 @@ have a different hash, so when you run it, it will be different. We are going to
 
 The "/bin/bash" at the end denotes that we are going to use **bash** shell, which our image has.
 
-A successful output is as below;
+A successful output is as below:
 
 ```
 	C:\00_ANA\JavaEE\WS\docker-java-app-example>docker exec -it 159c3ee8ef39 /bin/bash
