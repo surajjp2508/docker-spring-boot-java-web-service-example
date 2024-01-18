@@ -22,10 +22,10 @@ The web service we are using in this example is kept as simple as possible for t
 of demonstrating how to run a docker container. It has a simple controller class which is quite
 straight-forward as it is obvious: [HelloController](https://github.com/bzdgn/docker-spring-boot-java-web-service-example/blob/master/src/main/java/com/levo/dockerexample/controller/HelloController.java)
 
-The key thing using a standalone Spring Boot application is to create a **Fat Jar**, also known as
-**Uber Jar**. In order to create the **Uber Jar**, there are two things to be done;
+The key thing in using a standalone Spring Boot application is to create a **Fat Jar**, also known as
+**Uber Jar**. To create the **Uber Jar**, there are two things to be done;
 
-1. Add an **start-class** to point to the class acting as the Entry Point as the example below.
+1. Add a **start-class** to point to the class acting as the Entry Point as in the example below.
 The reason we are doing so is, we need to reference the **.jar** file in the [Dockerfile](https://github.com/bzdgn/docker-spring-boot-java-web-service-example/blob/master/Dockerfile);
 
 ```
@@ -78,15 +78,15 @@ we are all set and we can write the [Dockerfile](https://github.com/bzdgn/docker
 
 1 Dockerfile
 ------------
-With the **Dockerfile** we can define, configure and initialize our image and container. In **Dockerfile** we can define;
+With the **Dockerfile** we can define, configure, and initialize our image and container. In **Dockerfile** we can define;
 
-1. Which image we are going to use. We need a docker image that has the OpenJDK and thus we are going to use Alpine;
+1. Which image we are going to use? We need a docker image that has the OpenJDK and thus we are going to use Alpine;
 
 ```
 	FROM openjdk:8-jre-alpine
 ```
 
-2. Which shell we are going to have. I prefer **Bash** which I find easy to use;
+2. Which shell we are going to have? I prefer **Bash** which I find easy to use;
 
 ```
 	RUN apk update && apk add bash
@@ -104,7 +104,7 @@ With the **Dockerfile** we can define, configure and initialize our image and co
 	COPY /target/docker-java-app-example.jar /app
 ```
 
-5. The port number(s) that we need to expose to reach out from the container. Spring Boot default port is 8080;
+5. The port number(s) that we need to expose to reach out from the container. Spring Boot's default port is 8080;
 
 ```
 	EXPOSE 8080
@@ -116,7 +116,7 @@ With the **Dockerfile** we can define, configure and initialize our image and co
 	CMD ["java", "-jar", "docker-java-app-example.jar"]
 ```
 
-Notify that the CMD(command) parameters are separated with comma.
+Notify that the CMD(command) parameters are separated with a comma.
 
 Then our **Dockerfile** will be as below;
 
@@ -124,7 +124,7 @@ Then our **Dockerfile** will be as below;
 	# Use an official OpenJDK runtime as a parent image
 	FROM openjdk:8-jre-alpine
 	
-	# set shell to bash
+	# Set shell to bash
 	# source: https://stackoverflow.com/a/40944512/3128926
 	RUN apk update && apk add bash
 	
@@ -154,19 +154,19 @@ Before building the image, we need to create the **Uber Jar** (aka **Fat Jar**) 
 	mvn clean install
 ```
 
-Now our **Uber Jar** file is created under the target folder with the format: "target/<final_name>.jar" (or .war based on package in .pom file)
+Now our **Uber Jar** file is created under the target folder with the format: "target/<final_name>.jar" (or .war based on the package in .pom file)
 
-To build the image, we will use **docker build** command and tag it. The last parameter will be the directory, by using dot ("."),
+To build the image, we will use the **docker build** command and tag it. The last parameter will be the directory, by using dot ("."),
 we point to the current directory. So you must run this command on the top level directory of this repository.
 
 ```
-	docker build --tag=docker-java-hello-world-app .
+	docker build --tag=docker-java-hello-world-app.
 ```
 
 As you run the command which is written above, a successful example output will be as below:
 
 ```
-	C:\00_ANA\JavaEE\WS\docker-java-app-example>docker build --tag=docker-java-hello-world-app .
+	C:\00_ANA\JavaEE\WS\docker-java-app-example>docker build --tag=docker-java-hello-world-app.
 	Sending build context to Docker daemon  16.85MB
 	Step 1/6 : FROM openjdk:8-jre-alpine
 	 ---> 7e72a7dcf7dc
@@ -203,16 +203,16 @@ As you run the command which is written above, a successful example output will 
 	 ---> a0c355a25236
 	Successfully built a0c355a25236
 	Successfully tagged docker-java-hello-world-app:latest
-	SECURITY WARNING: You are building a Docker image from Windows against a non-Windows Docker host. All files and directories added to build context will have '-rwxr-xr-x' permissions. It is recommended to double check and reset permissions for sensitive files and directories.
+	SECURITY WARNING: You are building a Docker image from Windows against a non-Windows Docker host. All files and directories added to build context will have '-rwxr-xr-x' permissions. It is recommended to double-check and reset permissions for sensitive files and directories.
 ```
 
-After the image is built, you can check it with the ```docker image ls``` command. An example is as below;
+After the image is built, you can check it with the ``` docker image ls``` command. An example is as below;
 
 ```
 	C:\00_ANA\JavaEE\WS\docker-java-app-example>docker image ls
 	REPOSITORY                    TAG                 IMAGE ID            CREATED              SIZE
 	docker-java-hello-world-app   latest              a0c355a25236        About a minute ago   105MB
-	openjdk                       8-jre-alpine        7e72a7dcf7dc        5 days ago           83.1MB
+	OpenJDK                       8-jre-alpine        7e72a7dcf7dc        5 days ago           83.1MB
 ```
 
 
