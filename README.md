@@ -16,7 +16,7 @@ TOC
 - [5 Stopping The Docker Container](#5-stopping-the-docker-container)
 - [6 Cheat Sheet](#6-cheat-sheet)
 
-0 Spring Boot Web Service
+1. Spring Boot Web Service
 -------------------------
 The web service we are using in this example is kept as simple as possible for the simplicity
 of demonstrating how to run a docker container. It has a simple controller class which is quite
